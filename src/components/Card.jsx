@@ -1,9 +1,10 @@
 import { useState } from "react"
+import { NavLink } from "react-router"
 import defaultImg from "../assets/defaultIMG.png"
 
 export default function Card({ items = [] }) {
 
-    const { title, abstract, genre } = items
+    const { id, title, abstract, genre } = items
 
     const [hoverEvent, setHoverEvent] = useState(false)
 
@@ -13,6 +14,7 @@ export default function Card({ items = [] }) {
     function visibility() {
         setHoverEvent(true)
     }
+
 
     return (
 
@@ -25,6 +27,9 @@ export default function Card({ items = [] }) {
                     <div className="title">{title}</div>
                     <div className="text">{abstract}</div>
                     <div className="genre">{genre}</div>
+                    <NavLink to={`/${id}`}>
+                        <button>see more</button>
+                    </NavLink>
                 </div>
             }
         </div>
