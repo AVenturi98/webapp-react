@@ -18,10 +18,12 @@ export default function Index() {
 
 
     return (
-        <div>
-            {posts.map(p =>
-                <div key={p.id}>{p.title}</div>
-            )}
-        </div>
+        <main>
+            <div className="container">
+                {posts.map(p =>
+                    <div key={p.id}>{p.title}</div>
+                )}
+            </div>
+        </main>
     )
 }
