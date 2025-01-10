@@ -23,10 +23,6 @@ a.active {
   color: #4b54fc;
 }
 
-.container {
-  margin: 2rem 0
-}
-
 .nav-bar {
   background-color: coral;
   color: #fff;
@@ -37,4 +33,32 @@ a.active {
   display: flex;
   gap: 1rem;
   justify-content: center;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 1.5rem;
+  padding: 2rem
+}
+
+.card {
+  position: relative;
+}
+
+.card-body {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
 }

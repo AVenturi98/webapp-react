@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
+import Card from "../components/Card"
 
 export default function Index() {
 
@@ -8,7 +9,7 @@ export default function Index() {
     useEffect(() => {
         axios.get('http://localhost:3500/api/movies')
             .then((res) => {
-                console.log(res)
+                console.log(res.data)
                 setPosts(res.data)
             })
             .catch((err) => {
@@ -16,13 +17,11 @@ export default function Index() {
             })
     }, [])
 
-
     return (
         <main>
             <div className="container">
                 {posts.map(p =>
-                    <div key={p.id}>{p.title}</div>
-                )}
+                    <Card key={p.id} items={p} />)}
             </div>
         </main>
     )
