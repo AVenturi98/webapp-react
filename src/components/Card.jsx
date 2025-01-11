@@ -19,7 +19,7 @@ export default function Card({ items = [] }) {
     return (
 
         <div className="card" onMouseOver={visibility} onMouseOut={hidden}>
-            <img src={'http://localhost:5173/src/assets/' + image || defaultImg} />
+            <img src={image ? 'http://localhost:5173/src/assets/' + image : defaultImg} />
             {hoverEvent &&
                 <div className="card-body">
                     <div className="title">{title}</div>

@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 import DefaultLayout from "./layout/DefaultLayout";
 import Index from "./pages/Index";
-import Show from "./pages/Show"
+import Show from "./pages/show/Show"
 
 function App() {
 

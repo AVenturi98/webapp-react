@@ -19,7 +19,7 @@ export default function Index() {
 
     return (
         <main>
-            <div className="container grid">
+            <div className="container flex">
                 {posts.map(p =>
                     <div key={p.id} className="col">
                         <Card items={p} />
