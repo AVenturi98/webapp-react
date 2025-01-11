@@ -28,7 +28,7 @@
     font-style: italic;
 }
 
-.rev>* {
+.rev>*:not(h2) {
     border-radius: 50px;
     border: 1px solid rgb(253, 253, 253);
     margin: 1rem 0;
@@ -48,7 +48,7 @@ li>*:not(:first-child) {
 }
 
 li>*:not(:last-child) {
-    border-bottom: 1px solid rgb(253, 253, 253);
+    border-bottom: 1px solid rgba(65, 65, 65, 0.2);
 }
 
 .firstRowRev {
@@ -60,9 +60,3 @@ li>*:not(:last-child) {
     font-style: italic;
     color: rgba(139, 139, 139, 0.5);
 }
-
-
-/* .infoMovie {
-    display: flex;
-    flex-direction: column;
-} */

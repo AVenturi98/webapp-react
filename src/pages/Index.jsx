@@ -1,20 +1,14 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect } from "react"
 import axios from "axios"
 import Card from "../components/Card"
+import GlobalContext from "../context/GlobalContext"
 
 export default function Index() {
 
-    const [posts, setPosts] = useState([])
+    const { fetchData, posts } = useContext(GlobalContext)
 
     useEffect(() => {
-        axios.get('http://localhost:3500/api/movies')
-            .then((res) => {
-                console.log(res.data)
-                setPosts(res.data)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
+        fetchData()
     }, [])
 
     return (

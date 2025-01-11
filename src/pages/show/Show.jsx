@@ -2,6 +2,8 @@ import { useState, useEffect } from "react"
 import { useParams } from "react-router"
 import axios from "axios"
 import st from "./Show.module.css"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faStar as full } from "@fortawesome/free-solid-svg-icons"
 
 export default function Index() {
 
@@ -29,10 +31,15 @@ export default function Index() {
                     <div className={`${st.infoMovie} ${st.colPart}`}>
                         <h1 className={st.title}>{post.title}</h1>
                         <div><h3>Description</h3> <br /><span className={st.abstract}>{post.abstract}</span></div>
-                        <div><h3>Average vote</h3> <br /></div>
+                        <div><h3>Average vote</h3> <br />{post.vote.map(e =>
+                            <div key={Date()}>
+                                {e.vote_avg}
+                                <FontAwesomeIcon icon={full} style={{ color: "#FFD43B", }} />
+                            </div>)}
+                        </div>
                     </div>
-                    <h2 >SOMEONE REVIEWS TO MOVIE</h2>
                     <ul className={`${st.rev} ${st.colFull}`}>
+                        <h2 >SOMEONE REVIEWS TO MOVIE</h2>
 
                         {
                             post.reviews.map((el) =>
