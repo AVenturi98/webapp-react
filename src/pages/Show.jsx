@@ -4,7 +4,8 @@ import { useParams } from "react-router"
 
 export default function Index() {
 
-    const [post, setPost] = useState([])
+    const [post, setPost] = useState('')
+
     const { id } = useParams()
 
     useEffect(() => {
@@ -16,15 +17,26 @@ export default function Index() {
             .catch((err) => {
                 console.log(err)
             })
-    }, [])
+    }, [id])
 
 
     return (
-        <div>
+        <div className="container">
             {post &&
                 <>
-                    <div>{id}</div>
                     <div>{post.title}</div>
+                    <ul>
+
+                        {
+                            post.reviews.map((el) =>
+                                <li key={el.id}>
+                                    <div>{el.name}</div>
+                                    <div>{el.text}</div>
+                                    <div>{el.vote}</div>
+                                </li>
+                            )
+                        }
+                    </ul>
                 </>}
         </div>
     )

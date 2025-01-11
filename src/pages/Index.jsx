@@ -19,9 +19,12 @@ export default function Index() {
 
     return (
         <main>
-            <div className="container">
+            <div className="container grid">
                 {posts.map(p =>
-                    <Card key={p.id} items={p} />)}
+                    <div key={p.id} className="col">
+                        <Card items={p} />
+                    </div>
+                )}
             </div>
         </main>
     )
