@@ -30,7 +30,7 @@ function App() {
             <Route element={<DefaultLayout />}>
               <Route path='/' element={<Index />} />
               <Route path='/:id' element={<Show />} />
-              <Route path='/add' element={<Post />} />
+              {/* <Route path='/add' element={<Post />} /> */}
             </Route>
           </Routes>
         </BrowserRouter>

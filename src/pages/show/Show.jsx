@@ -10,15 +10,18 @@ export default function Show() {
 
     const { id } = useParams()
 
-    useEffect(() => {
+    function fetchMovie() {
         axios.get(`http://localhost:3500/api/movies/${id}`)
             .then((res) => {
-                // console.log(res.data)
+                console.log(res.data)
                 setPost(res.data)
             })
             .catch((err) => {
                 console.log(err)
             })
+    }
+    useEffect(() => {
+        fetchMovie()
     }, [id])
 
 
@@ -33,7 +36,12 @@ export default function Show() {
     const [review, setReview] = useState(initReview)
 
     function handle(e) {
-        setReview(e.target.value)
+
+        const { name, value } = e.target
+        setReview({
+            ...review,
+            [name]: value
+        })
     }
 
 
@@ -42,10 +50,11 @@ export default function Show() {
 
         console.log('Sending review:', review)
 
-        axios.post(`http://localhost:3500/api/movies/reviews`, review)
+        axios.post(`http://localhost:3500/api/movies/${id}/reviews`, review)
             .then((res) => {
-                console.log(res.data)
+                // console.log(res.data)
                 setReview(initReview)
+                fetchMovie()
             })
             .catch((err) => {
                 console.error(err)
@@ -96,15 +105,15 @@ export default function Show() {
 
                         <div>
                             <label htmlFor="name">Insert your name</label>
-                            <input type="text" name='name' placeholder="Name" onChange={handle} value={review.name} />
+                            <input type="text" name='name' id="name" placeholder="Name" onChange={handle} value={review.name} />
                         </div>
                         <div>
                             <label htmlFor="text">Your opinion</label>
-                            <input type="text" name='text' placeholder="Your opinion" onChange={handle} value={review.text} />
+                            <input type="text" name='text' id="text" placeholder="Your opinion" onChange={handle} value={review.text} />
                         </div>
                         <div>
                             <label htmlFor="vote">Vote</label>
-                            <input type="number" name='vote' placeholder="Vote" onChange={handle} value={review.vote} />
+                            <input type="number" name='vote' id="vote" placeholder="Vote" onChange={handle} value={review.vote} />
                         </div>
                         <button type="submit">Add</button>
                     </form>
