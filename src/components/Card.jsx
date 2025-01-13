@@ -2,7 +2,7 @@ import { useState } from "react"
 import { NavLink } from "react-router"
 import defaultImg from "../assets/defaultIMG.png"
 
-export default function Card({ items = [] }) {
+export default function Card({ items = '' }) {
 
     const { id, title, abstract, genre, image } = items
 

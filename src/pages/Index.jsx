@@ -7,6 +7,7 @@ export default function Index() {
 
     const { fetchData, posts } = useContext(GlobalContext)
 
+
     useEffect(() => {
         fetchData()
     }, [])

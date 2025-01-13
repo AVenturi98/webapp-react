@@ -28,6 +28,16 @@
     font-style: italic;
 }
 
+.avg_vote {
+    display: flex;
+    gap: 20px
+}
+
+.avg_vote:not(:first-child) {
+    font-style: italic;
+    color: rgba(139, 139, 139, 0.5);
+}
+
 .rev>*:not(h2) {
     border-radius: 50px;
     border: 1px solid rgb(253, 253, 253);
