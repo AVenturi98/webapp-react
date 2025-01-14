@@ -67,7 +67,7 @@ img {
 .nav_link {
   display: flex;
   gap: 1rem;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .container {

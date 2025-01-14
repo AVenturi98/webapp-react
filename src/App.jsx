@@ -9,9 +9,14 @@ import Show from "./pages/show/Show"
 function App() {
 
   const [posts, setPosts] = useState([])
+  const [search, setSearch] = useState('')
 
   function fetchData() {
-    axios.get('http://localhost:3500/api/movies')
+    axios.get('http://localhost:3500/api/movies', {
+      params: {
+        search: search
+      }
+    })
       .then((res) => {
         console.log(res)
         setPosts(res.data)
@@ -23,7 +28,7 @@ function App() {
 
   return (
     <>
-      <GlobalContext.Provider value={{ posts, fetchData }}>
+      <GlobalContext.Provider value={{ posts, fetchData, search, setSearch }}>
         <BrowserRouter>
           <Routes>
             <Route element={<DefaultLayout />}>

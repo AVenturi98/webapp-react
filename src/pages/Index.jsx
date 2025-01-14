@@ -1,5 +1,4 @@
 import { useContext, useEffect } from "react"
-import axios from "axios"
 import Card from "../components/Card"
 import GlobalContext from "../context/GlobalContext"
 
@@ -15,11 +14,12 @@ export default function Index() {
     return (
         <main>
             <div className="container flex">
-                {posts.map(p =>
-                    <div key={p.id} className="col">
-                        <Card items={p} />
-                    </div>
-                )}
+                {posts.length !== 0 ?
+                    posts.map(p =>
+                        <div key={p.id} className="col">
+                            <Card items={p} />
+                        </div>
+                    ) : <div>Not result</div>}
             </div>
         </main>
     )

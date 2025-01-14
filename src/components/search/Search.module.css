@@ -1,0 +1,16 @@
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input {
+    border-radius: 5px;
+    padding: .3rem;
+    background-color: #3d3d3d;
+}
+
+.btn {
+    background-color: rgb(158, 104, 85);
+    padding: .2rem .8rem;
+}
