@@ -1,10 +1,11 @@
-form>* {
+.formRew>* {
     display: flex;
     flex-direction: column;
     gap: 10px;
+
 }
 
-input {
+.inputRew {
     border-radius: 5px;
     line-height: 2rem;
     padding: .5rem;

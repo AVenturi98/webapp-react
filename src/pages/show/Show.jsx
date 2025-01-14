@@ -3,6 +3,7 @@ import { useParams } from "react-router"
 import axios from "axios"
 import st from "./Show.module.css"
 import VoteStar from "../../components/vote_star/VoteStar"
+import FormReview from "../../components/form/FormReview"
 
 export default function Show() {
 
@@ -24,50 +25,11 @@ export default function Show() {
         fetchMovie()
     }, [id])
 
-
-    //----------------------------------------------------
-    const initReview = {
-        movie_id: id,
-        name: '',
-        vote: '',
-        text: ''
-    }
-
-    const [review, setReview] = useState(initReview)
-
-    function handle(e) {
-
-        const { name, value } = e.target
-        setReview({
-            ...review,
-            [name]: value
-        })
-    }
-
-
-    function addRew(e) {
-        e.preventDefault()
-
-        console.log('Sending review:', review)
-
-        axios.post(`http://localhost:3500/api/movies/${id}/reviews`, review)
-            .then((res) => {
-                // console.log(res.data)
-                setReview(initReview)
-                fetchMovie()
-            })
-            .catch((err) => {
-                console.error(err)
-            })
-
-    }
-
-
     return (
-        <div className="container">
+        <div>
             {post &&
                 <>
-                    <div className={st.container}>
+                    <div className={`container ${st.container}`}>
                         <img src={'http://localhost:5173/src/assets/' + post.image} className={st.colPart} />
                         <div className={`${st.infoMovie} ${st.colPart}`}>
                             <h1 className={st.title}>{post.title}</h1>
@@ -98,27 +60,11 @@ export default function Show() {
                             }
                         </ul>
                     </div>
-
-                    {/* ----------------------------------------------- */}
-
-                    <form onSubmit={addRew}>
-
-                        <div>
-                            <label htmlFor="name">Insert your name</label>
-                            <input type="text" name='name' id="name" placeholder="Name" onChange={handle} value={review.name} />
-                        </div>
-                        <div>
-                            <label htmlFor="text">Your opinion</label>
-                            <input type="text" name='text' id="text" placeholder="Your opinion" onChange={handle} value={review.text} />
-                        </div>
-                        <div>
-                            <label htmlFor="vote">Vote</label>
-                            <input type="number" name='vote' id="vote" placeholder="Vote" onChange={handle} value={review.vote} />
-                        </div>
-                        <button type="submit">Add</button>
-                    </form>
+                    <div className={st.sectForm}>
+                        <h2>Add your review</h2>
+                        <FormReview id={id} callback={fetchMovie} />
+                    </div>
                 </>
-
             }
         </div >
     )

@@ -5,7 +5,6 @@ import GlobalContext from "./context/GlobalContext";
 import DefaultLayout from "./layout/DefaultLayout";
 import Index from "./pages/Index";
 import Show from "./pages/show/Show"
-import Post from "./pages/post/Post";
 
 function App() {
 
@@ -14,7 +13,7 @@ function App() {
   function fetchData() {
     axios.get('http://localhost:3500/api/movies')
       .then((res) => {
-        // console.log(res)
+        console.log(res)
         setPosts(res.data)
       })
       .catch((err) => {
@@ -30,7 +29,6 @@ function App() {
             <Route element={<DefaultLayout />}>
               <Route path='/' element={<Index />} />
               <Route path='/:id' element={<Show />} />
-              {/* <Route path='/add' element={<Post />} /> */}
             </Route>
           </Routes>
         </BrowserRouter>

@@ -8,9 +8,6 @@ export default function Nav() {
                 <li>
                     <NavLink to='/'>Home</NavLink>
                 </li>
-                <li>
-                    <NavLink to='/Add'>Add</NavLink>
-                </li>
             </ul>
         </div>
     )
