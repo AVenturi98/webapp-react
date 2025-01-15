@@ -1,21 +1,27 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { useParams } from "react-router"
 import axios from "axios"
 import VoteStar from "../../components/vote_star/VoteStar"
 import FormReview from "../../components/form/FormReview"
+import Loader from "../../components/loader/Loader"
 import st from "./Show.module.css"
+import GlobalContext from "../../context/GlobalContext"
 
 export default function Show() {
+
+    const { loading, setLoading } = useContext(GlobalContext)
 
     const [post, setPost] = useState('')
 
     const { id } = useParams()
 
     function fetchMovie() {
+        setLoading(true)
         axios.get(`http://localhost:3500/api/movies/${id}`)
             .then((res) => {
                 console.log(res.data)
                 setPost(res.data)
+                setLoading(false)
             })
             .catch((err) => {
                 console.log(err)
@@ -66,6 +72,8 @@ export default function Show() {
                     </div>
                 </>
             }
+            {loading &&
+                <Loader />}
         </div >
     )
 }

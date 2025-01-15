@@ -5,7 +5,7 @@ import Loader from "../components/loader/Loader"
 
 export default function Index() {
 
-    const { fetchData, posts, loading, setLoading } = useContext(GlobalContext)
+    const { fetchData, posts, loading } = useContext(GlobalContext)
 
 
     useEffect(() => {
