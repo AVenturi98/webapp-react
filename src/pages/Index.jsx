@@ -1,10 +1,11 @@
 import { useContext, useEffect } from "react"
 import Card from "../components/Card"
 import GlobalContext from "../context/GlobalContext"
+import Loader from "../components/loader/Loader"
 
 export default function Index() {
 
-    const { fetchData, posts } = useContext(GlobalContext)
+    const { fetchData, posts, loading, setLoading } = useContext(GlobalContext)
 
 
     useEffect(() => {
@@ -21,6 +22,8 @@ export default function Index() {
                         </div>
                     ) : <div>Not result</div>}
             </div>
+            {loading &&
+                <Loader />}
         </main>
     )
 }

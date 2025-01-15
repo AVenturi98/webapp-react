@@ -10,8 +10,10 @@ function App() {
 
   const [posts, setPosts] = useState([])
   const [search, setSearch] = useState('')
+  const [loading, setLoading] = useState(false)
 
   function fetchData() {
+    setLoading(true)
     axios.get('http://localhost:3500/api/movies', {
       params: {
         search: search
@@ -20,6 +22,7 @@ function App() {
       .then((res) => {
         console.log(res)
         setPosts(res.data)
+        setLoading(false)
       })
       .catch((err) => {
         console.log(err)
@@ -28,7 +31,7 @@ function App() {
 
   return (
     <>
-      <GlobalContext.Provider value={{ posts, fetchData, search, setSearch }}>
+      <GlobalContext.Provider value={{ posts, fetchData, search, setSearch, loading, setLoading }}>
         <BrowserRouter>
           <Routes>
             <Route element={<DefaultLayout />}>

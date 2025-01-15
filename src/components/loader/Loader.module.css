@@ -1,0 +1,24 @@
+.containLoad {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.iconLoad {
+    animation-name: load;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes load {
+    from {
+        transform: rotate(0deg)
+    }
+
+    to {
+        transform: rotate(365deg);
+    }
+}
